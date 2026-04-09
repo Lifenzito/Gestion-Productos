@@ -4,49 +4,41 @@
 
 {% block content %}
 <div class="row justify-content-center">
-    <div class="col-md-7">
-        <div class="card">
-            <div class="card-header bg-dark text-white">
-                <h5 class="mb-0"><i class="bi bi-box-seam"></i> Detalle del Producto</h5>
+    <div class="col-lg-7 col-md-9">
+        <div class="card-app">
+            <div class="card-head">
+                <h5><i class="bi bi-box-seam-fill"></i> Detalle del Producto</h5>
             </div>
-            <div class="card-body">
-                <h3 class="mb-3">{{ producto.nombre }}</h3>
+            <div class="p-4">
+                <h3 class="mb-4 fw-bold" style="color:var(--g900)">{{ producto.nombre }}</h3>
 
-                <table class="table table-borderless">
-                    <tr>
-                        <th style="width:35%">Descripción</th>
-                        <td>{{ producto.descripcion }}</td>
-                    </tr>
-                    <tr>
-                        <th>Precio</th>
-                        <td><span class="text-success fw-bold fs-5">${{ producto.precio }}</span></td>
-                    </tr>
-                    <tr>
-                        <th>Stock</th>
-                        <td>
-                            {% if producto.stock > 0 %}
-                                <span class="badge bg-success fs-6">{{ producto.stock }} unidades</span>
-                            {% else %}
-                                <span class="badge bg-danger fs-6">Sin stock</span>
-                            {% endif %}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Fecha de creación</th>
-                        <td class="text-muted">{{ producto.fecha_creacion|date:"d/m/Y H:i" }}</td>
-                    </tr>
-                </table>
+                <div class="drow">
+                    <span class="dl"><i class="bi bi-text-paragraph"></i> Descripci&oacute;n</span>
+                    <span class="dv">{{ producto.descripcion }}</span>
+                </div>
+                <div class="drow">
+                    <span class="dl"><i class="bi bi-currency-dollar"></i> Precio</span>
+                    <span class="price" style="font-size:1.2rem">${{ producto.precio }}</span>
+                </div>
+                <div class="drow">
+                    <span class="dl"><i class="bi bi-boxes"></i> Stock</span>
+                    <span>
+                        {% if producto.stock > 0 %}
+                            <span class="bg-ok" style="font-size:.85rem;padding:.4rem .9rem"><i class="bi bi-check-circle"></i> {{ producto.stock }} unidades</span>
+                        {% else %}
+                            <span class="bg-no" style="font-size:.85rem;padding:.4rem .9rem"><i class="bi bi-x-circle"></i> Sin stock</span>
+                        {% endif %}
+                    </span>
+                </div>
+                <div class="drow">
+                    <span class="dl"><i class="bi bi-calendar-event"></i> Fecha de creaci&oacute;n</span>
+                    <span class="dv text-muted">{{ producto.fecha_creacion|date:"d/m/Y H:i" }}</span>
+                </div>
             </div>
-            <div class="card-footer d-flex gap-2">
-                <a href="{% url 'lista_productos' %}" class="btn btn-secondary">
-                    <i class="bi bi-arrow-left"></i> Volver
-                </a>
-                <a href="{% url 'editar_producto' producto.pk %}" class="btn btn-warning">
-                    <i class="bi bi-pencil"></i> Editar
-                </a>
-                <a href="{% url 'eliminar_producto' producto.pk %}" class="btn btn-danger ms-auto">
-                    <i class="bi bi-trash"></i> Eliminar
-                </a>
+            <div class="px-4 pb-4 d-flex gap-2 flex-wrap">
+                <a href="{% url 'lista_productos' %}" class="b-outline"><i class="bi bi-arrow-left"></i> Volver</a>
+                <a href="{% url 'editar_producto' producto.pk %}" class="b-warn"><i class="bi bi-pencil-fill"></i> Editar</a>
+                <a href="{% url 'eliminar_producto' producto.pk %}" class="b-danger ms-auto"><i class="bi bi-trash-fill"></i> Eliminar</a>
             </div>
         </div>
     </div>
