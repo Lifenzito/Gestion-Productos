@@ -146,7 +146,7 @@
     <div class="container">
         {% if messages %}
             {% for message in messages %}
-                <div class="alert-app alert-{{ message.tags }} mb-3" role="alert">
+                <div class="alert alert-dismissible alert-app alert-{{ message.tags }} mb-3" role="alert">
                     <i class="bi bi-check-circle-fill"></i>
                     <span>{{ message }}</span>
                     <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" style="font-size:.7rem;"></button>
